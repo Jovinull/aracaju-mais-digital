@@ -19,7 +19,7 @@ const Educacao = () => {
       rating: 4.8,
       vagas: 25,
       inscricoes: 120,
-      inicio: '2024-12-25',
+      inicio: '2025-12-25',
       imagem: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg',
       descricao: 'Aprenda os fundamentos da informática e navegação na internet.',
       certificacao: true,
@@ -36,7 +36,7 @@ const Educacao = () => {
       rating: 4.9,
       vagas: 30,
       inscricoes: 89,
-      inicio: '2024-12-28',
+      inicio: '2025-12-28',
       imagem: 'https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg',
       descricao: 'Curso básico de inglês focado em conversação e gramática essencial.',
       certificacao: true,
@@ -116,14 +116,14 @@ const Educacao = () => {
     {
       curso: 'Informática Básica',
       instituicao: 'CIEE Aracaju',
-      conclusao: '2024-11-15',
+      conclusao: '2025-11-15',
       cargaHoraria: '40h',
       status: 'Concluído'
     },
     {
       curso: 'Atendimento ao Cliente',
       instituicao: 'SEBRAE',
-      conclusao: '2024-10-20',
+      conclusao: '2025-10-20',
       cargaHoraria: '20h',
       status: 'Concluído'
     },

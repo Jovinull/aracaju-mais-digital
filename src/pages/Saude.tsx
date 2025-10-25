@@ -45,7 +45,7 @@ const Saude = () => {
     {
       especialista: 'Dr. João Silva',
       especialidade: 'Clínico Geral',
-      data: '2024-12-20',
+      data: '2025-12-20',
       hora: '14:30',
       tipo: 'Teleatendimento',
       status: 'confirmada'
@@ -53,7 +53,7 @@ const Saude = () => {
     {
       especialista: 'Dra. Maria Santos',
       especialidade: 'Psicologia',
-      data: '2024-12-22',
+      data: '2025-12-22',
       hora: '10:00',
       tipo: 'Presencial',
       status: 'pendente'
@@ -62,14 +62,14 @@ const Saude = () => {
 
   const historicoMedico = [
     {
-      data: '2024-12-15',
+      data: '2025-12-15',
       especialista: 'Dr. Carlos Oliveira',
       especialidade: 'Cardiologia',
       diagnostico: 'Consulta de rotina - Pressão arterial normal',
       receita: 'Manter exercícios regulares'
     },
     {
-      data: '2024-12-10',
+      data: '2025-12-10',
       especialista: 'Dra. Ana Costa',
       especialidade: 'Clínico Geral',
       diagnostico: 'Exames de rotina - Resultados normais',

@@ -65,14 +65,14 @@ const AssistenciaSocial = () => {
     {
       beneficio: 'Auxílio Brasil',
       valor: 'R$ 600,00',
-      proximoPagamento: '2024-12-18',
+      proximoPagamento: '2025-12-18',
       status: 'Ativo',
       numeroCartao: '**** **** **** 1234'
     },
     {
       beneficio: 'Auxílio Gás',
       valor: 'R$ 110,00',
-      proximoPagamento: '2024-12-20',
+      proximoPagamento: '2025-12-20',
       status: 'Ativo',
       numeroCartao: '**** **** **** 1234'
     }
@@ -80,19 +80,19 @@ const AssistenciaSocial = () => {
 
   const solicitacoesAndamento = [
     {
-      protocolo: '2024123456789',
+      protocolo: '2025123456789',
       beneficio: 'BPC - Benefício de Prestação Continuada',
-      datasolicitacao: '2024-11-15',
+      datasolicitacao: '2025-11-15',
       status: 'Em análise',
-      prazoResposta: '2024-12-30',
+      prazoResposta: '2025-12-30',
       etapa: 'Análise documental'
     },
     {
-      protocolo: '2024123456790',
+      protocolo: '2025123456790',
       beneficio: 'Auxílio Maternidade',
-      datasolicitacao: '2024-12-01',
+      datasolicitacao: '2025-12-01',
       status: 'Documentação pendente',
-      prazoResposta: '2024-12-29',
+      prazoResposta: '2025-12-29',
       etapa: 'Aguardando documentos'
     }
   ]

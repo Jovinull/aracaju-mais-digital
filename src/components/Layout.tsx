@@ -275,9 +275,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
-                    <p>Praça Fausto Cardoso, s/n</p>
-                    <p>Centro - Aracaju/SE</p>
-                    <p>CEP: 49010-050</p>
+                    <p>R. Frei Luiz Canolo de Noronha,</p>
+                    <p>42 - Ponto Novo, Aracaju - SE</p>
+                    <p>CEP: 49097-270</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -287,7 +287,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     className="hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
                     aria-label="Telefone da prefeitura"
                   >
-                    (79) 3179-1000
+                    (79) 4009-7800
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -412,7 +412,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* Copyright */}
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
             <p>
-              © 2024 Prefeitura Municipal de Aracaju. Todos os direitos reservados.
+              © 2025 Prefeitura Municipal de Aracaju. Todos os direitos reservados.
             </p>
             <p className="mt-2">
               <a 
