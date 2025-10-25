@@ -79,7 +79,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               aria-label="Prefeitura de Aracaju - Ir para página inicial"
             >
               <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bras%C3%A3o_de_Aracaju.svg/200px-Bras%C3%A3o_de_Aracaju.svg.png" 
+                src="./src/assets/brasao-aracaju.svg" 
                 alt="Brasão da Prefeitura de Aracaju" 
                 className="h-12 w-12"
               />
@@ -92,8 +92,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </p>
               </div>
             </Link>
-
-            
 
             {/* Navigation - Desktop */}
             <nav 
