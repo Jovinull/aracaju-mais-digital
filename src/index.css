@@ -1,68 +1,376 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* ===== ACESSIBILIDADE GLOBAL ===== */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Screen Reader Only - Oculta visualmente mas mantém para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Torna visível quando focado */
+.sr-only.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
+/* ===== CONFIGURAÇÕES DE TAMANHO DE FONTE ===== */
+
+/* Tamanho pequeno */
+.font-small {
+  font-size: 14px;
+}
+
+.font-small h1 { font-size: 1.75rem; }
+.font-small h2 { font-size: 1.5rem; }
+.font-small h3 { font-size: 1.25rem; }
+.font-small h4 { font-size: 1.125rem; }
+.font-small p, .font-small span, .font-small div { font-size: 14px; }
+.font-small button { font-size: 14px; }
+
+/* Tamanho normal (padrão) */
+.font-normal {
+  font-size: 16px;
+}
+
+.font-normal h1 { font-size: 2rem; }
+.font-normal h2 { font-size: 1.75rem; }
+.font-normal h3 { font-size: 1.5rem; }
+.font-normal h4 { font-size: 1.25rem; }
+.font-normal p, .font-normal span, .font-normal div { font-size: 16px; }
+.font-normal button { font-size: 16px; }
+
+/* Tamanho grande */
+.font-large {
+  font-size: 18px;
+}
+
+.font-large h1 { font-size: 2.5rem; }
+.font-large h2 { font-size: 2.25rem; }
+.font-large h3 { font-size: 2rem; }
+.font-large h4 { font-size: 1.75rem; }
+.font-large p, .font-large span, .font-large div { font-size: 18px; }
+.font-large button { font-size: 18px; }
+
+/* Tamanho extra grande */
+.font-extra-large {
+  font-size: 22px;
+}
+
+.font-extra-large h1 { font-size: 3rem; }
+.font-extra-large h2 { font-size: 2.75rem; }
+.font-extra-large h3 { font-size: 2.5rem; }
+.font-extra-large h4 { font-size: 2.25rem; }
+.font-extra-large p, .font-extra-large span, .font-extra-large div { font-size: 22px; }
+.font-extra-large button { font-size: 22px; }
+
+/* ===== ALTO CONTRASTE ===== */
+
+.high-contrast {
+  filter: contrast(150%) brightness(1.2);
+}
+
+.high-contrast * {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.high-contrast a {
+  color: #0000ff !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast a:visited {
+  color: #800080 !important;
+}
+
+.high-contrast button {
+  color: #ffffff !important;
+  background-color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+.high-contrast button:hover,
+.high-contrast button:focus {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.high-contrast .bg-blue-600,
+.high-contrast .bg-blue-700,
+.high-contrast .bg-green-600,
+.high-contrast .bg-green-700 {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast .text-blue-600,
+.high-contrast .text-green-600,
+.high-contrast .text-gray-600,
+.high-contrast .text-gray-700,
+.high-contrast .text-gray-900 {
+  color: #000000 !important;
+}
+
+.high-contrast .border-gray-200,
+.high-contrast .border-gray-300 {
+  border-color: #000000 !important;
+}
+
+/* ===== FOCO VISÍVEL MELHORADO ===== */
+
+.focus-visible *:focus {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
+}
+
+.focus-visible button:focus,
+.focus-visible a:focus,
+.focus-visible input:focus,
+.focus-visible select:focus,
+.focus-visible textarea:focus {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
+}
+
+/* ===== MOVIMENTO REDUZIDO ===== */
+
+.reduced-motion,
+.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ===== MELHORIAS GERAIS DE ACESSIBILIDADE ===== */
+
+/* Garante que todos os elementos interativos tenham pelo menos 44px */
+button, 
+a, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Melhora a legibilidade do texto */
 body {
-  margin: 0;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Garante contraste adequado para placeholders */
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.high-contrast input::placeholder,
+.high-contrast textarea::placeholder {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* ===== ESTADOS DE HOVER E FOCUS ===== */
+
+/* Melhora os estados visuais para interação */
+button:hover,
+a:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+.reduced-motion button:hover,
+.reduced-motion a:hover {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* ===== SKIP LINKS ===== */
+
+.skip-links a {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 8px 16px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.skip-links a:focus {
+  left: 8px;
+  top: 8px;
+}
+
+/* ===== MELHORIAS PARA LEITORES DE TELA ===== */
+
+/* Garante que elementos decorativos sejam ignorados */
+[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* Melhora a apresentação de listas para leitores de tela */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ===== RESPONSIVIDADE MELHORADA ===== */
+
+/* Garante que o conteúdo seja legível em todas as resoluções */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .font-small { font-size: 16px; }
+  .font-normal { font-size: 18px; }
+  .font-large { font-size: 20px; }
+  .font-extra-large { font-size: 24px; }
+}
+
+/* ===== MELHORIAS PARA FORMULÁRIOS ===== */
+
+/* Melhora a aparência de campos obrigatórios */
+input:required,
+select:required,
+textarea:required {
+  border-left: 4px solid #dc2626;
+}
+
+input:required:valid,
+select:required:valid,
+textarea:required:valid {
+  border-left: 4px solid #16a34a;
+}
+
+/* Melhora mensagens de erro */
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.high-contrast .error-message {
+  color: #000000 !important;
+  font-weight: bold !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* ===== MELHORIAS PARA TABELAS ===== */
+
+/* Melhora a legibilidade de tabelas */
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+th, td {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+.high-contrast th {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast td {
+  border-color: #000000 !important;
+}
+
+/* ===== UTILITÁRIOS DE ACESSIBILIDADE ===== */
+
+/* Classe para elementos que devem ser anunciados por leitores de tela */
+.announce {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.announce.active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* ===== ANIMAÇÕES RESPEITOSAS ===== */
+
+/* Animações que respeitam prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  a:hover {
-    color: #747bff;
+}
+
+/* ===== MELHORIAS PARA DARK MODE (se implementado) ===== */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1f2937;
+    color: #f9fafb;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .skip-links,
+  .accessibility-menu,
+  button:not(.print-button) {
+    display: none !important;
+  }
+  
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
   }
 }
