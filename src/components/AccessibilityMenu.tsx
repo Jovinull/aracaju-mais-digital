@@ -94,7 +94,7 @@ const AccessibilityMenu = () => {
 				aria-label="Abrir menu de acessibilidade"
 				title="Menu de Acessibilidade"
 			>
-				<img src="/src/assets/acessibilidade.png" alt="abc" style={{ padding: ".4rem" }} />
+				<img src="src/assets/acessibilidade.png" alt="abc" style={{ padding: ".4rem" }} />
 				<Accessibility className="w-8 h-8" />
 			</button>
 

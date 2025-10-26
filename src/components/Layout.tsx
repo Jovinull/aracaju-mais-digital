@@ -92,7 +92,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 							className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-2"
 							aria-label="Prefeitura de Aracaju - Ir para página inicial"
 						>
-							<img src="/src/assets/brasao-aracaju.svg" alt="Brasão da Prefeitura de Aracaju" className="h-12 w-12" />
+							<img src="src/assets/brasao-aracaju.svg" alt="Brasão da Prefeitura de Aracaju" className="h-12 w-12" />
 							<div>
 								<h1 className="text-xl font-bold text-gray-900">Prefeitura de Aracaju</h1>
 								<p className="text-sm text-gray-600">Serviços Digitais</p>
