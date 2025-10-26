@@ -4,38 +4,19 @@
 
 /* ===== ACESSIBILIDADE GLOBAL ===== */
 
-/* Screen Reader Only - Oculta visualmente mas mantém para leitores de tela */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-
-/* Torna visível quando focado */
 .sr-only.focus\:not-sr-only:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: inherit;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
+  position: static; width: auto; height: auto;
+  padding: inherit; margin: inherit; overflow: visible;
+  clip: auto; white-space: normal;
 }
 
-/* ===== CONFIGURAÇÕES DE TAMANHO DE FONTE ===== */
-
-/* Tamanho pequeno */
-.font-small {
-  font-size: 14px;
-}
-
+/* ===== TAMANHO DE FONTE ===== */
+.font-small { font-size: 14px; }
 .font-small h1 { font-size: 1.75rem; }
 .font-small h2 { font-size: 1.5rem; }
 .font-small h3 { font-size: 1.25rem; }
@@ -43,11 +24,7 @@
 .font-small p, .font-small span, .font-small div { font-size: 14px; }
 .font-small button { font-size: 14px; }
 
-/* Tamanho normal (padrão) */
-.font-normal {
-  font-size: 16px;
-}
-
+.font-normal { font-size: 16px; }
 .font-normal h1 { font-size: 2rem; }
 .font-normal h2 { font-size: 1.75rem; }
 .font-normal h3 { font-size: 1.5rem; }
@@ -55,11 +32,7 @@
 .font-normal p, .font-normal span, .font-normal div { font-size: 16px; }
 .font-normal button { font-size: 16px; }
 
-/* Tamanho grande */
-.font-large {
-  font-size: 18px;
-}
-
+.font-large { font-size: 18px; }
 .font-large h1 { font-size: 2.5rem; }
 .font-large h2 { font-size: 2.25rem; }
 .font-large h3 { font-size: 2rem; }
@@ -67,11 +40,7 @@
 .font-large p, .font-large span, .font-large div { font-size: 18px; }
 .font-large button { font-size: 18px; }
 
-/* Tamanho extra grande */
-.font-extra-large {
-  font-size: 22px;
-}
-
+.font-extra-large { font-size: 22px; }
 .font-extra-large h1 { font-size: 3rem; }
 .font-extra-large h2 { font-size: 2.75rem; }
 .font-extra-large h3 { font-size: 2.5rem; }
@@ -79,69 +48,132 @@
 .font-extra-large p, .font-extra-large span, .font-extra-large div { font-size: 22px; }
 .font-extra-large button { font-size: 22px; }
 
-/* ===== ALTO CONTRASTE ===== */
+/* ===== ALTO CONTRASTE (AJUSTADO) ===== */
+.high-contrast { filter: contrast(125%) brightness(1.05); }
 
-.high-contrast {
-  filter: contrast(150%) brightness(1.2);
+/* Texto padrão escuro (sem '*' global) */
+.high-contrast body,
+.high-contrast :where(p, span, li, label, small, strong, em, code, th, td,
+                     h1, h2, h3, h4, h5, h6) {
+  color: #000 !important;
 }
 
-.high-contrast * {
-  color: #000000 !important;
-  background-color: #ffffff !important;
-  border-color: #000000 !important;
+/* Fundo padrão claro */
+.high-contrast body { background-color: #fff !important; }
+
+/* Superfícies claras comuns */
+.high-contrast :where(.card, .panel, .sheet, .prose, .content, .bg-white) {
+  background-color: #fff !important; color: #000 !important;
 }
 
-.high-contrast a {
-  color: #0000ff !important;
-  text-decoration: underline !important;
+/* Superfície clara explícita para “cartões” do UI */
+.high-contrast .hc-surface,
+.high-contrast .hc-surface * {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-color: #000 !important;
 }
 
-.high-contrast a:visited {
-  color: #800080 !important;
+/* Inputs e campos */
+.high-contrast :where(input, select, textarea) {
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
 }
 
+/* Overlays/máscaras continuam escuros */
+.high-contrast :where(.overlay, .modal-backdrop, [data-overlay], .fixed.inset-0) {
+  background-color: rgba(0,0,0,0.75) !important;
+}
+
+/* Links visíveis */
+.high-contrast a { color: #00f !important; text-decoration: underline !important; }
+.high-contrast a:visited { color: #800080 !important; }
+
+/* Botões nativos */
 .high-contrast button {
-  color: #ffffff !important;
-  background-color: #000000 !important;
-  border: 2px solid #ffffff !important;
+  color: #fff !important;
+  background-color: #000 !important;
+  border: 2px solid #fff !important;
+}
+.high-contrast button * { color: #fff !important; }
+
+/* ⚠️ Links estilizados como botões (fundo escuro) */
+.high-contrast a.bg-blue-600,
+.high-contrast a.bg-blue-700,
+.high-contrast a.bg-green-600,
+.high-contrast a.bg-green-700,
+.high-contrast [role="button"].bg-blue-600,
+.high-contrast [role="button"].bg-blue-700,
+.high-contrast [role="button"].bg-green-600,
+.high-contrast [role="button"].bg-green-700 {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+.high-contrast a.bg-blue-600 *,
+.high-contrast a.bg-blue-700 *,
+.high-contrast a.bg-green-600 *,
+.high-contrast a.bg-green-700 *,
+.high-contrast [role="button"].bg-blue-600 *,
+.high-contrast [role="button"].bg-blue-700 *,
+.high-contrast [role="button"].bg-green-600 *,
+.high-contrast [role="button"].bg-green-700 * {
+  color: #fff !important; /* garante texto/ícones brancos DENTRO do link-botão */
 }
 
+/* Hover/focus de botões/links-botão (inversão) */
 .high-contrast button:hover,
-.high-contrast button:focus {
-  color: #000000 !important;
-  background-color: #ffffff !important;
-  border-color: #000000 !important;
+.high-contrast button:focus,
+.high-contrast a.bg-blue-600:hover,
+.high-contrast a.bg-blue-700:hover,
+.high-contrast a.bg-green-600:hover,
+.high-contrast a.bg-green-700:hover,
+.high-contrast [role="button"].bg-blue-600:hover,
+.high-contrast [role="button"].bg-blue-700:hover,
+.high-contrast [role="button"].bg-green-600:hover,
+.high-contrast [role="button"].bg-green-700:hover,
+.high-contrast a.bg-blue-600:focus,
+.high-contrast a.bg-blue-700:focus,
+.high-contrast a.bg-green-600:focus,
+.high-contrast a.bg-green-700:focus,
+.high-contrast [role="button"].bg-blue-600:focus,
+.high-contrast [role="button"].bg-blue-700:focus,
+.high-contrast [role="button"].bg-green-600:focus,
+.high-contrast [role="button"].bg-green-700:focus {
+  color: #000 !important;
+  background-color: #fff !important;
+  border-color: #000 !important;
+}
+.high-contrast a.bg-blue-600:hover *,
+.high-contrast a.bg-blue-700:hover *,
+.high-contrast a.bg-green-600:hover *,
+.high-contrast a.bg-green-700:hover *,
+.high-contrast [role="button"].bg-blue-600:hover *,
+.high-contrast [role="button"].bg-blue-700:hover *,
+.high-contrast [role="button"].bg-green-600:hover *,
+.high-contrast [role="button"].bg-green-700:hover *,
+.high-contrast a.bg-blue-600:focus *,
+.high-contrast a.bg-blue-700:focus *,
+.high-contrast a.bg-green-600:focus *,
+.high-contrast a.bg-green-700:focus *,
+.high-contrast [role="button"].bg-blue-600:focus *,
+.high-contrast [role="button"].bg-blue-700:focus *,
+.high-contrast [role="button"].bg-green-600:focus *,
+.high-contrast [role="button"].bg-green-700:focus * {
+  color: #000 !important;
 }
 
-.high-contrast .bg-blue-600,
-.high-contrast .bg-blue-700,
-.high-contrast .bg-green-600,
-.high-contrast .bg-green-700 {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
+/* Ajustes utilitários */
 .high-contrast .text-blue-600,
 .high-contrast .text-green-600,
 .high-contrast .text-gray-600,
 .high-contrast .text-gray-700,
-.high-contrast .text-gray-900 {
-  color: #000000 !important;
-}
+.high-contrast .text-gray-900 { color: #000 !important; }
+.high-contrast .border-gray-200, .high-contrast .border-gray-300 { border-color: #000 !important; }
 
-.high-contrast .border-gray-200,
-.high-contrast .border-gray-300 {
-  border-color: #000000 !important;
-}
-
-/* ===== FOCO VISÍVEL MELHORADO ===== */
-
-.focus-visible *:focus {
-  outline: 3px solid #2563eb !important;
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
-}
-
+/* ===== FOCO VISÍVEL ===== */
+.focus-visible *:focus,
 .focus-visible button:focus,
 .focus-visible a:focus,
 .focus-visible input:focus,
@@ -149,228 +181,81 @@
 .focus-visible textarea:focus {
   outline: 3px solid #2563eb !important;
   outline-offset: 2px !important;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.3) !important;
 }
 
 /* ===== MOVIMENTO REDUZIDO ===== */
-
-.reduced-motion,
-.reduced-motion * {
-  animation-duration: 0.01ms !important;
+.reduced-motion, .reduced-motion * {
+  animation-duration: .01ms !important;
   animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
+  transition-duration: .01ms !important;
   scroll-behavior: auto !important;
 }
 
-/* ===== MELHORIAS GERAIS DE ACESSIBILIDADE ===== */
-
-/* Garante que todos os elementos interativos tenham pelo menos 44px */
-button, 
-a, 
-input[type="button"], 
-input[type="submit"], 
-input[type="reset"] {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Melhora a legibilidade do texto */
-body {
-  line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-}
-
-/* Garante contraste adequado para placeholders */
-input::placeholder,
-textarea::placeholder {
-  color: #6b7280;
-  opacity: 1;
-}
-
-.high-contrast input::placeholder,
-.high-contrast textarea::placeholder {
-  color: #000000 !important;
-  opacity: 1 !important;
-}
-
-/* ===== ESTADOS DE HOVER E FOCUS ===== */
-
-/* Melhora os estados visuais para interação */
-button:hover,
-a:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-  transition: all 0.2s ease;
-}
-
-.reduced-motion button:hover,
-.reduced-motion a:hover {
-  transform: none !important;
-  transition: none !important;
-}
+/* ===== GERAIS ===== */
+button, a, input[type="button"], input[type="submit"], input[type="reset"] { min-height: 44px; min-width: 44px; }
+body { line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif; }
+input::placeholder, textarea::placeholder { color: #6b7280; opacity: 1; }
+.high-contrast input::placeholder, .high-contrast textarea::placeholder { color: #000 !important; opacity: 1 !important; }
+button:hover, a:hover { opacity: .9; transform: translateY(-1px); transition: all .2s ease; }
+.reduced-motion button:hover, .reduced-motion a:hover { transform: none !important; transition: none !important; }
 
 /* ===== SKIP LINKS ===== */
-
 .skip-links a {
-  position: absolute;
-  left: -9999px;
-  z-index: 999;
-  padding: 8px 16px;
-  background: #2563eb;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
+  position: absolute; left: -9999px; z-index: 999;
+  padding: 8px 16px; background: #2563eb; color: #fff;
+  text-decoration: none; border-radius: 4px; font-weight: 600;
 }
+.skip-links a:focus { left: 8px; top: 8px; }
 
-.skip-links a:focus {
-  left: 8px;
-  top: 8px;
-}
+/* ===== LEITORES DE TELA ===== */
+[aria-hidden="true"] { pointer-events: none; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 
-/* ===== MELHORIAS PARA LEITORES DE TELA ===== */
-
-/* Garante que elementos decorativos sejam ignorados */
-[aria-hidden="true"] {
-  display: none !important;
-}
-
-/* Melhora a apresentação de listas para leitores de tela */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-  padding: 0;
-}
-
-/* ===== RESPONSIVIDADE MELHORADA ===== */
-
-/* Garante que o conteúdo seja legível em todas as resoluções */
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-  
+  body { font-size: 16px; }
   .font-small { font-size: 16px; }
   .font-normal { font-size: 18px; }
   .font-large { font-size: 20px; }
   .font-extra-large { font-size: 24px; }
 }
 
-/* ===== MELHORIAS PARA FORMULÁRIOS ===== */
+/* ===== FORMULÁRIOS ===== */
+input:required, select:required, textarea:required { border-left: 4px solid #dc2626; }
+input:required:valid, select:required:valid, textarea:required:valid { border-left: 4px solid #16a34a; }
+.error-message { color: #dc2626; font-size: .875rem; margin-top: .25rem; display: flex; align-items: center; }
+.high-contrast .error-message { color: #000 !important; font-weight: bold !important; }
 
-/* Melhora a aparência de campos obrigatórios */
-input:required,
-select:required,
-textarea:required {
-  border-left: 4px solid #dc2626;
-}
+/* ===== TABELAS ===== */
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #d1d5db; padding: 12px; text-align: left; }
+th { background-color: #f9fafb; font-weight: 600; }
+.high-contrast th { background-color: #000 !important; color: #fff !important; }
+.high-contrast td { border-color: #000 !important; }
 
-input:required:valid,
-select:required:valid,
-textarea:required:valid {
-  border-left: 4px solid #16a34a;
-}
+/* ===== UTILITÁRIOS ===== */
+.announce { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.announce.active { position: static; width: auto; height: auto; overflow: visible; }
 
-/* Melhora mensagens de erro */
-.error-message {
-  color: #dc2626;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  display: flex;
-  align-items: center;
-}
-
-.high-contrast .error-message {
-  color: #000000 !important;
-  font-weight: bold !important;
-}
-
-/* ===== MELHORIAS PARA TABELAS ===== */
-
-/* Melhora a legibilidade de tabelas */
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: 1px solid #d1d5db;
-  padding: 12px;
-  text-align: left;
-}
-
-th {
-  background-color: #f9fafb;
-  font-weight: 600;
-}
-
-.high-contrast th {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
-.high-contrast td {
-  border-color: #000000 !important;
-}
-
-/* ===== UTILITÁRIOS DE ACESSIBILIDADE ===== */
-
-/* Classe para elementos que devem ser anunciados por leitores de tela */
-.announce {
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.announce.active {
-  position: static;
-  width: auto;
-  height: auto;
-  overflow: visible;
-}
-
-/* ===== ANIMAÇÕES RESPEITOSAS ===== */
-
-/* Animações que respeitam prefers-reduced-motion */
+/* ===== PREFERS-REDUCED-MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
 }
 
-/* ===== MELHORIAS PARA DARK MODE (se implementado) ===== */
-
+/* ===== DARK MODE (opcional) ===== */
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1f2937;
-    color: #f9fafb;
-  }
+  body { background-color: #1f2937; color: #f9fafb; }
 }
 
-/* ===== PRINT STYLES ===== */
-
+/* ===== PRINT ===== */
 @media print {
-  .skip-links,
-  .accessibility-menu,
-  button:not(.print-button) {
-    display: none !important;
-  }
-  
-  a::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    color: #666;
-  }
-  
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
+  .skip-links, .accessibility-menu, button:not(.print-button) { display: none !important; }
+  a::after { content: " (" attr(href) ")"; font-size: .8em; color: #666; }
+  a[href^="#"]::after, a[href^="javascript:"]::after { content: ""; }
 }

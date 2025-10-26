@@ -59,11 +59,8 @@
       z-index: 9999;
       transition: top 0.3s;
     }
-    
-    .skip-link:focus {
-      top: 6px;
-    }
-    
+    .skip-link:focus { top: 6px; }
+
     /* Prevenção de flash de conteúdo não estilizado */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -71,55 +68,35 @@
       margin: 0;
       padding: 0;
     }
-    
+
     /* Loading screen acessível */
     .loading-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: #f8fafc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       z-index: 9998;
     }
-    
-    .loading-content {
-      text-align: center;
-      color: #1f2937;
-    }
-    
+    .loading-content { text-align: center; color: #1f2937; }
     .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #e5e7eb;
-      border-top: 4px solid #2563eb;
+      width: 40px; height: 40px;
+      border: 4px solid #e5e7eb; border-top: 4px solid #2563eb;
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin: 0 auto 16px;
     }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
     /* Suporte para usuários que preferem movimento reduzido */
     @media (prefers-reduced-motion: reduce) {
-      .loading-spinner {
-        animation: none;
-        border: 4px solid #2563eb;
-      }
+      .loading-spinner { animation: none; border: 4px solid #2563eb; }
     }
-    
-    /* Alto contraste automático baseado em preferências do sistema */
-    @media (prefers-contrast: high) {
-      body {
-        filter: contrast(150%);
-      }
-    }
+
+    /* Alto contraste automático baseado em preferências do sistema
+       (DESATIVADO para evitar conflito com o toggle dentro do app)
+    @media (prefers-contrast: high) { body { filter: contrast(150%); } }
+    */
   </style>
 </head>
 <body>
@@ -133,9 +110,7 @@
     <div class="loading-content">
       <div class="loading-spinner" aria-hidden="true"></div>
       <p>Carregando serviços municipais...</p>
-      <p style="font-size: 0.875rem; color: #6b7280;">
-        Portal de acessibilidade da Prefeitura de Aracaju
-      </p>
+      <p style="font-size: 0.875rem; color: #6b7280;">Portal de acessibilidade da Prefeitura de Aracaju</p>
     </div>
   </div>
   
@@ -153,9 +128,7 @@
       const loadingScreen = document.getElementById('loading-screen');
       if (loadingScreen) {
         loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-          loadingScreen.remove();
-        }, 300);
+        setTimeout(() => { loadingScreen.remove(); }, 300);
       }
     });
     
@@ -164,12 +137,9 @@
       const container = urgent ? 
         document.getElementById('urgent-announcements') : 
         document.getElementById('announcements');
-      
       if (container) {
         container.textContent = message;
-        setTimeout(() => {
-          container.textContent = '';
-        }, 1000);
+        setTimeout(() => { container.textContent = ''; }, 1000);
       }
     };
     
@@ -177,42 +147,31 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('reduced-motion');
     }
-    
-    if (window.matchMedia('(prefers-contrast: high)').matches) {
-      document.documentElement.classList.add('high-contrast');
-    }
-    
-    // Suporte a atalhos de teclado globais
+
+    // ⚠️ NÃO ativar automaticamente alto contraste aqui para não conflitar com o toggle do app
+    // if (window.matchMedia('(prefers-contrast: high)').matches) {
+    //   document.documentElement.classList.add('high-contrast');
+    // }
+
+    // Atalhos globais
     document.addEventListener('keydown', function(e) {
-      // Alt + H = Ir para o topo
       if (e.altKey && e.key === 'h') {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         document.querySelector('h1')?.focus();
       }
-      
-      // Alt + M = Abrir menu principal
       if (e.altKey && e.key === 'm') {
         e.preventDefault();
         document.getElementById('main-navigation')?.focus();
       }
-      
-      // Escape = Fechar modais/menus
       if (e.key === 'Escape') {
         const openMenus = document.querySelectorAll('[aria-expanded="true"]');
-        openMenus.forEach(menu => {
-          menu.click();
-        });
+        openMenus.forEach(menu => { menu.click(); });
       }
     });
-    
-    // Melhora o foco para usuários de teclado
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Tab') {
-        document.body.classList.add('keyboard-navigation');
-      }
+      if (e.key === 'Tab') { document.body.classList.add('keyboard-navigation'); }
     });
-    
     document.addEventListener('mousedown', function() {
       document.body.classList.remove('keyboard-navigation');
     });

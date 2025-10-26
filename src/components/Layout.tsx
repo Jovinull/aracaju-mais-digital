@@ -136,6 +136,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 									<Link
 										key={item.path}
 										to={item.path}
+										role="button" 
 										className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"
 										aria-label={item.description}
 									>
@@ -220,6 +221,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 										<Link
 											key={item.path}
 											to={item.path}
+											role="button"
 											className="flex items-center space-x-3 px-4 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"
 											aria-label={item.description}
 										>
